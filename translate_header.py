@@ -870,7 +870,7 @@ def type_4(param: Dict) -> str:
         else:
             raise ValueError(f"Error parsing type_4: {param['type']['coord']}")
 
-        return f"{type_a}{type_b}{type_c}{type_c}"
+        return f"{type_a}{type_b}{type_c}{type_d}"
     else:
         raise Exception("Unknown type!")
 
