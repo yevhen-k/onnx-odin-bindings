@@ -46,7 +46,7 @@ gcc -E -std=c99 onnxruntime_c_api.h > onnxruntime_c_api_prep.h
 
 ```bash
 perl -pi -e 's/onnxruntime_c_api.h/onnxruntime_c_api_prep.h/g' onnxruntime_c_api_prep.h
-perl -i -nle 'p' onnxrint if !/^\#/runtime_c_api_prep.h 
+perl -i -nle 'print if !/^\#/' onnxruntime_c_api_prep.h 
 perl -pi -e 's/__\w+__//g' onnxruntime_c_api_prep.h
 perl -pi -e 's/\(\(.+\)\)//g' onnxruntime_c_api_prep.h
 perl -pi -e 's/__restrict//g' onnxruntime_c_api_prep.h
