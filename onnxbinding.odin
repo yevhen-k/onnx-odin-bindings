@@ -212,7 +212,7 @@ foreign onnx {
 // Type definition of struct pointers:
 OrtStatusPtr :: ^OrtStatus 
 
-OrtCustomHandleType :: struct #packed {
+OrtCustomHandleType :: struct {
 	__place_holder: c.char,
 }
 
@@ -221,36 +221,36 @@ OrtCustomThreadHandle :: ^OrtCustomHandleType
 // End Type definition of struct pointers
 
 // Declared structs:
-OrtEnv :: struct #packed {}
-OrtStatus :: struct #packed {}
-OrtMemoryInfo :: struct #packed {}
-OrtIoBinding :: struct #packed {}
-OrtSession :: struct #packed {}
-OrtValue :: struct #packed {}
-OrtRunOptions :: struct #packed {}
-OrtTypeInfo :: struct #packed {}
-OrtTensorTypeAndShapeInfo :: struct #packed {}
-OrtMapTypeInfo :: struct #packed {}
-OrtSequenceTypeInfo :: struct #packed {}
-OrtOptionalTypeInfo :: struct #packed {}
-OrtSessionOptions :: struct #packed {}
-OrtCustomOpDomain :: struct #packed {}
-OrtModelMetadata :: struct #packed {}
-OrtThreadPoolParams :: struct #packed {}
-OrtThreadingOptions :: struct #packed {}
-OrtArenaCfg :: struct #packed {}
-OrtPrepackedWeightsContainer :: struct #packed {}
-OrtTensorRTProviderOptionsV2 :: struct #packed {}
-OrtCUDAProviderOptionsV2 :: struct #packed {}
-OrtCANNProviderOptions :: struct #packed {}
-OrtDnnlProviderOptions :: struct #packed {}
-OrtOp :: struct #packed {}
-OrtOpAttr :: struct #packed {}
-OrtLogger :: struct #packed {}
-OrtShapeInferContext :: struct #packed {}
-OrtKernelInfo :: struct #packed {}
-OrtKernelContext :: struct #packed {}
-OrtTrainingApi :: struct #packed {}
+OrtEnv :: struct {}
+OrtStatus :: struct {}
+OrtMemoryInfo :: struct {}
+OrtIoBinding :: struct {}
+OrtSession :: struct {}
+OrtValue :: struct {}
+OrtRunOptions :: struct {}
+OrtTypeInfo :: struct {}
+OrtTensorTypeAndShapeInfo :: struct {}
+OrtMapTypeInfo :: struct {}
+OrtSequenceTypeInfo :: struct {}
+OrtOptionalTypeInfo :: struct {}
+OrtSessionOptions :: struct {}
+OrtCustomOpDomain :: struct {}
+OrtModelMetadata :: struct {}
+OrtThreadPoolParams :: struct {}
+OrtThreadingOptions :: struct {}
+OrtArenaCfg :: struct {}
+OrtPrepackedWeightsContainer :: struct {}
+OrtTensorRTProviderOptionsV2 :: struct {}
+OrtCUDAProviderOptionsV2 :: struct {}
+OrtCANNProviderOptions :: struct {}
+OrtDnnlProviderOptions :: struct {}
+OrtOp :: struct {}
+OrtOpAttr :: struct {}
+OrtLogger :: struct {}
+OrtShapeInferContext :: struct {}
+OrtKernelInfo :: struct {}
+OrtKernelContext :: struct {}
+OrtTrainingApi :: struct {}
 
 // End Declared structs
 
@@ -258,7 +258,7 @@ OrtTrainingApi :: struct #packed {}
 
 // End Declared typedef structs
 
-OrtAllocator :: struct #packed {
+OrtAllocator :: struct {
 	version: c.uint32_t,
 	Alloc : proc(this_: ^OrtAllocator, size: c.size_t, ) -> rawptr,
 
@@ -268,7 +268,7 @@ OrtAllocator :: struct #packed {
 
 }
 
-OrtCUDAProviderOptions :: struct #packed {
+OrtCUDAProviderOptions :: struct {
 	device_id: c.int,
 	cudnn_conv_algo_search: OrtCudnnConvAlgoSearch,
 	gpu_mem_limit: c.size_t,
@@ -282,7 +282,7 @@ OrtCUDAProviderOptions :: struct #packed {
 	tunable_op_max_tuning_duration_ms: c.int,
 }
 
-OrtROCMProviderOptions :: struct #packed {
+OrtROCMProviderOptions :: struct {
 	device_id: c.int,
 	miopen_conv_exhaustive_search: c.int,
 	gpu_mem_limit: c.size_t,
@@ -296,7 +296,7 @@ OrtROCMProviderOptions :: struct #packed {
 	tunable_op_max_tuning_duration_ms: c.int,
 }
 
-OrtTensorRTProviderOptions :: struct #packed {
+OrtTensorRTProviderOptions :: struct {
 	device_id: c.int,
 	has_user_compute_stream: c.int,
 	user_compute_stream: rawptr,
@@ -317,7 +317,7 @@ OrtTensorRTProviderOptions :: struct #packed {
 	trt_force_sequential_engine_build: c.int,
 }
 
-OrtMIGraphXProviderOptions :: struct #packed {
+OrtMIGraphXProviderOptions :: struct {
 	device_id: c.int,
 	migraphx_fp16_enable: c.int,
 	migraphx_int8_enable: c.int,
@@ -325,7 +325,7 @@ OrtMIGraphXProviderOptions :: struct #packed {
 	migraphx_int8_calibration_table_name: cstring,
 }
 
-OrtOpenVINOProviderOptions :: struct #packed {
+OrtOpenVINOProviderOptions :: struct {
 	device_type: cstring,
 	enable_npu_fast_compile: c.char,
 	device_id: cstring,
@@ -336,14 +336,14 @@ OrtOpenVINOProviderOptions :: struct #packed {
 	enable_dynamic_shapes: c.char,
 }
 
-OrtApiBase :: struct #packed {
+OrtApiBase :: struct {
 	GetApi : proc(version: c.uint32_t, ) -> ^OrtApi,
 
 	GetVersionString : proc() -> cstring,
 
 }
 
-OrtApi :: struct #packed {
+OrtApi :: struct {
 	CreateStatus : proc(code: OrtErrorCode, msg: cstring, ) -> ^OrtStatus,
 
 	GetErrorCode : proc(status: ^OrtStatus, ) -> OrtErrorCode,
@@ -898,7 +898,7 @@ OrtApi :: struct #packed {
 
 }
 
-OrtCustomOp :: struct #packed {
+OrtCustomOp :: struct {
 	version: c.uint32_t,
 	CreateKernel : proc(op: ^OrtCustomOp, api: ^OrtApi, info: ^OrtKernelInfo, ) -> rawptr,
 

@@ -458,7 +458,7 @@ def write_typedef_struct_pointer(
             elif node["type"]["type"]["type"]["_nodetype"] == "Struct":
                 # 1. parsing struct
                 struct_name = node["type"]["type"]["type"]["name"]
-                onnx_bindings_file.write(f"{struct_name} :: struct #packed {{\n")
+                onnx_bindings_file.write(f"{struct_name} :: struct {{\n")
                 for decl in node["type"]["type"]["type"]["decls"]:
                     field_name = decl["name"]
                     field_type = type_1(decl)
@@ -574,7 +574,7 @@ def write_declared_structs(
             and node["type"]["name"] not in defined
         ):
             # print("struct", node["type"]["name"])
-            onnx_bindings_file.write(f'{node["type"]["name"]} :: struct #packed {{}}\n')
+            onnx_bindings_file.write(f'{node["type"]["name"]} :: struct {{}}\n')
             written_structs.append(node["type"]["name"])
         else:
             rem["ext"].append(node)
@@ -603,9 +603,7 @@ def write_declared_typedef_struct(
         ):
             # print("typedef struct", node["type"]["name"])
             if node["name"] not in written_structs:
-                onnx_bindings_file.write(
-                    f'{node["type"]["name"]} :: struct #packed {{}}\n'
-                )
+                onnx_bindings_file.write(f'{node["type"]["name"]} :: struct {{}}\n')
         else:
             rem["ext"].append(node)
     onnx_bindings_file.write("\n")
@@ -637,7 +635,7 @@ def write_defined_structs(
             print("+++", node["type"]["name"])
             # -------------------------------------------------------------------------------
             struct_name = node["type"]["name"]
-            onnx_bindings_file.write(f"{struct_name} :: struct #packed {{\n")
+            onnx_bindings_file.write(f"{struct_name} :: struct {{\n")
             for decl in node["type"]["decls"]:
                 if not is_func_pointer(decl):
                     field_name = decl["name"]
@@ -673,7 +671,7 @@ def write_defined_structs(
         ):
             print(">>>", node["name"])
             struct_name = node["name"]
-            onnx_bindings_file.write(f"{struct_name} :: struct #packed {{\n")
+            onnx_bindings_file.write(f"{struct_name} :: struct {{\n")
             for decl in node["type"]["type"]["decls"]:
                 if not is_func_pointer(decl):
                     field_name = decl["name"]
