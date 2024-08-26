@@ -3,3 +3,6 @@ dump.json
 rem.json
 *.version
 *.h
+start_docker.sh
+.vscode-remote-data
+.docker.xauth.*
