@@ -2,7 +2,8 @@ venv/
 dump.json
 rem.json
 *.version
-*.h
+onnxruntime_c_api_prep.h
+onnxruntime_c_api.h
 start_docker.sh
 .vscode-remote-data
 .docker.xauth.*
